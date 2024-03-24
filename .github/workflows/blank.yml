@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4.1.1
 
       - name: Make reports directory
         run: mkdir reports
@@ -26,7 +26,7 @@ jobs:
         run: /home/node/artillery/bin/run report --output reports/report.html reports/report.json
 
       - name: Archive test report
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4.3.1
         with:
           name: artillery-test-report
           path: reports/*
