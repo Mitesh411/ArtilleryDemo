@@ -30,3 +30,27 @@ jobs:
         with:
           name: artillery-test-report
           path: reports/*
+
+  artilleryjob2:
+      runs-on: ubuntu-latest
+
+      container: artilleryio/artillery:latest
+
+      steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4.1.1
+
+      - name: Make reports directory
+        run: mkdir reports
+
+      - name: Execute load tests
+        run: /home/node/artillery/bin/run run --output reports/report.json tests/performance/browser-test-with-steps.yml
+        
+      - name: Generate HTML report
+        run: /home/node/artillery/bin/run report --output reports/report.html reports/report.json
+
+      - name: Archive test report
+        uses: actions/upload-artifact@v4.3.1
+        with:
+          name: artillery-test-report
+          path: reports/*         
