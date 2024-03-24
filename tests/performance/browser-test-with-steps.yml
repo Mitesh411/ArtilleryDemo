@@ -1,12 +1,10 @@
 config:
-  target: "https://www.artillery.io"
-  phases:
-    - arrivalRate: 1
-      duration: 10
+  target: https://www.artillery.io
+  # Load the Playwright engine:
   engines:
     playwright: {}
-  processor: ./flows.js
+  # Path to JavaScript file that defines Playwright test functions
+  processor: "./flows.js"
 scenarios:
-  - name: flow_with_multiple_steps
-    engine: playwright
-    flowFunction: "checkPage"
+  - engine: playwright
+    testFunction: "helloFlow"
