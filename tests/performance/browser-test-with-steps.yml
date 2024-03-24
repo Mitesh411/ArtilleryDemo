@@ -9,4 +9,4 @@ config:
 scenarios:
   - name: flow_with_multiple_steps
     engine: playwright
-    flowFunction: "multistepWithCustomMetrics"
+    flowFunction: "checkPage"
